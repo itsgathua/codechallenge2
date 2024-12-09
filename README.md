@@ -10,20 +10,20 @@ A simple interactive shopping list application where users can:
 
 
 ## Features
-### Add Items**:
+### Add Items:
    - Enter a shopping item in the input field and click the "Add" button.
    - The item will appear in the list.
 
-### Mark Items as Purchased**:
-   - Click on an item in the list to mark it as purchased (text will have a strikethrough and a green background).
+### Mark Items as Purchased:
+   - Click on the button "purchase" in the list to mark it as purchased (The button will change to show unmark).
+   - If the item was not purchased and the button was clicked by mistake, you can unmark the item.
 
-### Edit Items**:
+### Edit Items:
    - Click the "Edit" button next to an item to change its name.
-### Clear the List**:
+### Clear the List:
    - Click the "Clear List" button to remove all items from the list.
 
-### Persistent Storage**:
-   - Items are saved in the browser's local storage, so they remain after refreshing or reopening the page.
+
 
 
 
@@ -47,9 +47,7 @@ A simple interactive shopping list application where users can:
 
 ## How it Works
 
-### Local Storage**:
-  - Saves the list in the browser so it doesn't reset on refresh.
-  - Uses `JSON.stringify` to store and `JSON.parse` to retrieve the data.
+
 
 ### Event Listeners**:
   - For buttons and list items to handle user actions (add, mark, edit, and clear).

@@ -1,12 +1,12 @@
 // Select important elements
-const itemInput = document.getElementById('itemSpace');
-const addItemBtn = document.getElementById('addItemButton');
-const clearListBtn = document.getElementById('clearListButton');
-const shoppingList = document.getElementById('shoppingList');
+let itemSpace = document.getElementById('itemSpace');
+let addItemButton = document.getElementById('addItemButton');
+let clearListButton = document.getElementById('clearListButton');
+let shoppingList = document.getElementById('shoppingList');
 
 // Add item to the list
 addItemButton.addEventListener('click', function () {
-  let itemName = itemInput.value.trim(); // Get the input value
+  let itemName = itemSpace.value.trim(); // Get the input value
   if (itemName === '') {
     alert('Please enter an item.');
     return;
@@ -19,12 +19,19 @@ addItemButton.addEventListener('click', function () {
   let itemText = document.createElement('span');
   itemText.textContent = itemName;
 
-  // Mark item as purchased when clicked
-  itemText.addEventListener('click', function () {
-    itemText.classList.toggle('purchased');
+  // Create a Purchase button
+  let purchaseButton = document.createElement('button');
+  purchaseButton.textContent = 'Purchase';
+  purchaseButton.addEventListener('click', function () {
+    // Toggle purchased class on the item and update button text
+    if (listItem.classList.toggle('purchased')) {
+      purchaseButton.textContent = 'Unmark';
+    } else {
+      purchaseButton.textContent = 'Purchase';
+    }
   });
 
-  // Create an edit button
+  // Create an Edit button
   let editButton = document.createElement('button');
   editButton.textContent = 'Edit';
   editButton.addEventListener('click', function () {
@@ -36,17 +43,17 @@ addItemButton.addEventListener('click', function () {
 
   // Append everything to the list item
   listItem.appendChild(itemText);
+  listItem.appendChild(purchaseButton);
   listItem.appendChild(editButton);
 
   // Add the list item to the shopping list
   shoppingList.appendChild(listItem);
 
   // Clear the input field
-  itemInput.value = '';
+  itemSpace.value = '';
 });
 
 // Clear the entire list
 clearListButton.addEventListener('click', function () {
   shoppingList.innerHTML = ''; // Remove all list items
 });
-
