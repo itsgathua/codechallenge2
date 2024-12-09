@@ -7,8 +7,8 @@ const shoppingList = document.getElementById('shoppingList');
 // Load list from localStorage or initialize an empty array
 let shoppingItems = JSON.parse(localStorage.getItem('shoppingItems')) || [];
 
-// Render the list on page load
-renderList();
+// Create the list on page load
+createList();
 
 // Add a new item
 addItemBtn.addEventListener('click', () => {
@@ -16,24 +16,24 @@ addItemBtn.addEventListener('click', () => {
   if (item) {
     shoppingItems.push({ name: item, purchased: false });
     itemInput.value = '';
-    saveAndRender();
+    saveAndCreate();
   }
 });
 
 // Clear the list
 clearListBtn.addEventListener('click', () => {
   shoppingItems = [];
-  saveAndRender();
+  saveAndCreate();
 });
 
 // Save to localStorage and re-render the list
-function saveAndRender() {
+function saveAndCreate() {
   localStorage.setItem('shoppingItems', JSON.stringify(shoppingItems));
   renderList();
 }
 
-// Render the shopping list
-function renderList() {
+// Create the shopping list
+function createList() {
   shoppingList.innerHTML = '';
   shoppingItems.forEach((item, index) => {
     const listItem = document.createElement('li');
@@ -47,7 +47,7 @@ function renderList() {
     // Toggle purchased on click
     listItem.querySelector('span').addEventListener('click', () => {
       shoppingItems[index].purchased = !shoppingItems[index].purchased;
-      saveAndRender();
+      saveAndCreate();
     });
 
     // Edit item
@@ -55,7 +55,7 @@ function renderList() {
       const newName = prompt('Edit item:', item.name);
       if (newName) {
         shoppingItems[index].name = newName.trim();
-        saveAndRender();
+        saveAndCreate();
       }
     });
 
