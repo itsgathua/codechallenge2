@@ -1,5 +1,7 @@
 # Shopping List Webpage
 
+this is my livelink - https://itsgathua.github.io/codechallenge2/
+
 A simple interactive shopping list application where users can:
 
 - Add items to the list.
