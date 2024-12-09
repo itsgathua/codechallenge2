@@ -29,7 +29,7 @@ clearListBtn.addEventListener('click', () => {
 // Save to localStorage and re-render the list
 function saveAndCreate() {
   localStorage.setItem('shoppingItems', JSON.stringify(shoppingItems));
-  renderList();
+  createList();
 }
 
 // Create the shopping list
@@ -44,11 +44,6 @@ function createList() {
       <button class="edit">Edit</button>
     `;
 
-    // Toggle purchased on click
-    listItem.querySelector('span').addEventListener('click', () => {
-      shoppingItems[index].purchased = !shoppingItems[index].purchased;
-      saveAndCreate();
-    });
 
     // Edit item
     listItem.querySelector('.edit').addEventListener('click', () => {
